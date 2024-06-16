@@ -11,19 +11,16 @@ def add_wine(current_user_token):
     name = request.json['name']
     country = request.json['country']
     region = request.json['region']
-    sub_region = request.json['sub_region']
     vintage = request.json['vintage']
-    varietals = request.json['varietals']
-    size = request.json['size']
-    closure = request.json['closure']
     taste = request.json['taste']
     nose = request.json['nose']
     price = request.json['price']
+    img = request.json['img']
     user_token = current_user_token.token
 
     print(f'BIG TESTER: {current_user_token.token}')
 
-    wine = Wine(name, country, region, sub_region, vintage, varietals, size, closure, taste, nose, price, user_token = user_token )
+    wine = Wine(name, country, region, vintage, taste, nose, price, img, user_token = user_token )
 
     db.session.add(wine)
     db.session.commit()
@@ -60,14 +57,11 @@ def update_contact(current_user_token,id):
     wine.name = request.json['name']
     wine.country = request.json['country']
     wine.region = request.json['region']
-    wine.sub_region = request.json['sub_region']
     wine.vintage = request.json['vintage']
-    wine.varietals = request.json['varietals']
-    wine.size = request.json['size']
-    wine.closure = request.json['closure']
     wine.taste = request.json['taste']
     wine.nose = request.json['nose']
     wine.price = request.json['price']
+    wine.img = request.json['img']
     wine.user_token = current_user_token.token
 
     db.session.commit()

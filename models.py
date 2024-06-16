@@ -55,29 +55,23 @@ class Wine(db.Model):
     name = db.Column(db.String(150), nullable = False)
     country = db.Column(db.String(100))
     region = db.Column(db.String(100))
-    sub_region = db.Column(db.String(100))
     vintage = db.Column(db.Integer)
-    varietals = db.Column(db.String(100))
-    size = db.Column(db.String(100))
-    closure = db.Column(db.String(100))
     taste = db.Column(db.String(200))
     nose = db.Column(db.String(200))
     price = db.Column(db.String(50))
+    img = db.Coluimn(db.String(200))
     user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
-    def __init__(self,name,country,region,sub_region,vintage,varietals,size,closure,taste,nose,price, user_token, id = ''):
+    def __init__(self,name,country,region,vintage,taste,nose,price,img, user_token, id = ''):
         self.id = self.set_id()
         self.name = name
         self.country = country
         self.region = region
-        self.sub_region = sub_region
         self.vintage = vintage
-        self.varietals = varietals
-        self.size = size
-        self.closure = closure
         self.taste = taste
         self.nose = nose
         self.price = price
+        self.img = img
         self.user_token = user_token
 
 
@@ -89,7 +83,7 @@ class Wine(db.Model):
 
 class WineSchema(ma.Schema):
     class Meta:
-        fields = ['id', 'name','country','region', 'sub_region', 'vintage', 'varietals', 'size', 'closure', 'taste', 'nose', 'price']
+        fields = ['id', 'name','country','region', 'sub_region', 'vintage','taste', 'nose', 'price', 'img']
 
 wine_schema = WineSchema()
 wines_schema = WineSchema(many=True)
