@@ -59,7 +59,7 @@ class Wine(db.Model):
     taste = db.Column(db.String(200))
     nose = db.Column(db.String(200))
     price = db.Column(db.String(50))
-    img = db.Coluimn(db.String(200))
+    img = db.Column(db.String(200))
     user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
     def __init__(self,name,country,region,vintage,taste,nose,price,img, user_token, id = ''):
